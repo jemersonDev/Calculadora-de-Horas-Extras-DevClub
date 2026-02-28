@@ -43,3 +43,38 @@ function calcular() {
     
     displayResultado.innerHTML = conteudoHtml;
 }
+
+// --- FUNÇÃO PARA COMPARTILHAR NO WHATSAPP ---
+function compartilharWhatsApp() {
+    const salario = document.getElementById('salario').value;
+    const qtdHoras = document.getElementById('quantidade').value;
+    const resultados = document.getElementById('resultado').innerText;
+
+    if (!resultados) {
+        alert("Calcule os valores primeiro!");
+        return;
+    }
+
+    const mensagem = `*Calculadora de Horas Extras DevClub* \n\n` +
+                     `Salário Base: R$ ${salario}\n` +
+                     `Horas Realizadas: ${qtdHoras}h\n\n` +
+                     `*Resultados:*\n${resultados}\n` +
+                     `Criado por: JemersonLM`;
+
+    // Codifica a mensagem para link de URL
+    const mensagemCodificada = encodeURIComponent(mensagem);
+    window.open(`https://wa.me/?text=${mensagemCodificada}`, '_blank');
+}
+
+// --- FUNÇÃO PARA IMPRIMIR ---
+function imprimirHolerite() {
+    const resultados = document.getElementById('resultado').innerText;
+    
+    if (!resultados) {
+        alert("Calcule os valores primeiro!");
+        return;
+    }
+
+    
+    window.print();
+}
